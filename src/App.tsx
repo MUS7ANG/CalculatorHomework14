@@ -1,9 +1,10 @@
 import './App.css'
+import {KeyboardSimulator} from "./pages/KeyboardSimulator/KeyboardSimulator.tsx";
 
 function App() {
 
   return (
-      <h1>che</h1>
+      <KeyboardSimulator/>
   )
 }
 

@@ -12,7 +12,7 @@ export const PasswordDisplay = () => {
                 width: "200px",
                 padding: 2,
                 textAlign: "center",
-                backgroundColor: password ? (isAccessGranted ? "green" : "red") : "grey.200",
+                backgroundColor: password ? (isAccessGranted ? "green" : "red") : "blue",
                 borderRadius: 2,
                 mb: 2,
             }}
