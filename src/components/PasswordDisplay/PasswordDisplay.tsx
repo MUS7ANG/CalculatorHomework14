@@ -1,10 +1,17 @@
 import {useStore} from "../../store/useStore.ts"
 import {Box, Typography} from "@mui/material";
+import {useEffect} from "react";
 
 export const PasswordDisplay = () => {
-    const {password, isAccessGranted} = useStore();
+    const {password, isAccessGranted, isChecked} = useStore();
     const display = password.replace(/./g, "*")
     const message = password && isAccessGranted ? "Access accepted" : password && !isAccessGranted ? "Access denied." : "Access denied.";
+    useEffect(() => {
+        if (isChecked && isAccessGranted) {
+            const audio = new Audio('../winSound.wav');
+            audio.play().catch((error) => console.log('Ошибка воспроизведения:', error));
+        }
+    }, [isChecked, isAccessGranted]);
 
     return (
         <Box
@@ -12,7 +19,7 @@ export const PasswordDisplay = () => {
                 width: "200px",
                 padding: 2,
                 textAlign: "center",
-                backgroundColor: password ? (isAccessGranted ? "green" : "red") : "blue",
+                backgroundColor: isChecked ? isAccessGranted ? 'lightgreen' : 'lightcoral' : 'blue',
                 borderRadius: 2,
                 mb: 2,
             }}
