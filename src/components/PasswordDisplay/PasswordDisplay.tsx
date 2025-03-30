@@ -13,6 +13,13 @@ export const PasswordDisplay = () => {
         }
     }, [isChecked, isAccessGranted]);
 
+    useEffect(() => {
+        if (isChecked && !isAccessGranted) {
+            const audio = new Audio('../denied.wav');
+            audio.play().catch((error) => console.log('Ошибка воспроизведения:', error));
+        }
+    }, [isChecked, isAccessGranted]);
+
     return (
         <Box
             sx={{
